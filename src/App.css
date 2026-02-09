@@ -8,12 +8,14 @@ body {
     min-height: 100vh;
   }
   
+  /* Header */
   .header {
     background: #ff5a5f;
     color: #fff;
     padding: 16px 24px;
   }
   
+  /* Layout */
   .content {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -23,14 +25,40 @@ body {
     margin: auto;
   }
   
-  .menu-section {
+  /* Sections */
+  .menu-section,
+  .sidebar {
     background: #fff;
     padding: 16px;
     border-radius: 12px;
   }
   
-  .sidebar {
-    background: #fff;
-    padding: 16px;
-    border-radius: 12px;
+  /* =========================
+     📱 Mobile Responsiveness
+     ========================= */
+  
+  @media (max-width: 768px) {
+    .content {
+      grid-template-columns: 1fr;
+      padding: 12px;
+    }
+  
+    .menu-section,
+    .sidebar {
+      padding: 14px;
+    }
+  
+    .header h1 {
+      font-size: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .header {
+      padding: 14px;
+    }
+  
+    .header h1 {
+      font-size: 18px;
+    }
   }
