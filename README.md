@@ -1,16 +1,72 @@
-# React + Vite
+# 🎨 Order Management Frontend – Food Delivery App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the frontend implementation for the **Order Management** feature of a food delivery application.
 
-Currently, two official plugins are available:
+It provides a simple and intuitive UI for browsing the menu, placing orders, and tracking order status.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🛠 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React (Vite)
+- JavaScript (ES6+)
+- Fetch API
+- Vitest
+- React Testing Library
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+- Menu display with food items (name, description, price)
+- Cart management (add items, update quantity, remove items)
+- Checkout flow with customer details
+- Order placement via REST APIs
+- Order status tracking with simulated real-time updates
+- Frontend tests following a TDD approach
+
+---
+
+## 🧠 Application Flow
+
+1. User views the menu
+2. Adds items to the cart
+3. Proceeds to checkout
+4. Places the order
+5. Tracks order status in real time
+
+---
+
+## 🔁 Real-Time Updates
+
+Order status is updated in near real time using **polling**.
+
+- The frontend polls the backend every few seconds
+- The backend simulates order status changes
+- Polling stops once the order is delivered
+
+---
+
+## 🧪 Testing
+
+Component and interaction tests are written using **Vitest** and **React Testing Library**.
+
+Test coverage includes:
+- Menu rendering
+- Cart interactions
+- Checkout form submission
+- Order status updates
+
+Run tests using:
+
+```bash
+npm test
+
+## ▶️ Running Locally
+npm install
+npm run dev
+
+App runs on http://localhost:5173
+
+Backend APIs are available here:
+👉 Order Management Backend Repository

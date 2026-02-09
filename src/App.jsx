@@ -3,6 +3,7 @@ import MenuList from "./components/MenuList";
 import Cart from "./components/Cart";
 import CheckoutForm from "./components/CheckoutForm";
 import { createOrder } from "./services/api";
+import OrderStatus from "./components/OrderStatus";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -77,13 +78,8 @@ function App() {
         </>
       )}
 
-      {orderId && (
-        <div>
-          <h2>Order placed successfully 🎉</h2>
-          <p>Your Order ID:</p>
-          <strong>{orderId}</strong>
-        </div>
-      )}
+
+{orderId && <OrderStatus orderId={orderId} />}
     </div>
   );
 }
