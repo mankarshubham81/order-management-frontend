@@ -12,7 +12,8 @@ describe("MenuList", () => {
         id: "1",
         name: "Pizza",
         description: "Cheese pizza",
-        price: 299
+        price: 299,
+        imageUrl: "https://example.com/pizza.jpg"
       }
     ]);
 
@@ -22,7 +23,10 @@ describe("MenuList", () => {
 
     expect(await screen.findByText("Pizza")).toBeInTheDocument();
 
-    fireEvent.click(screen.getByText("Add to Cart"));
+    fireEvent.click(
+      screen.getByRole("button", { name: /add to cart/i })
+    );
+
     expect(onAddToCart).toHaveBeenCalledTimes(1);
   });
 });
