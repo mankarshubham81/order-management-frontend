@@ -9,7 +9,7 @@ const STATUSES = [
   "Delivered"
 ];
 
-const OrderStatus = ({ orderId }) => {
+const OrderStatus = ({ orderId, onReset }) => {
   const [status, setStatus] = useState("Order Received");
   const [error, setError] = useState(null);
 
@@ -39,6 +39,7 @@ const OrderStatus = ({ orderId }) => {
   if (error) return <p className="error">{error}</p>;
 
   const currentIndex = STATUSES.indexOf(status);
+  const isDelivered = status === "Delivered";
 
   return (
     <div className="order-status-container">
@@ -51,11 +52,8 @@ const OrderStatus = ({ orderId }) => {
         {STATUSES.map((step, index) => {
           let className = "status-step";
 
-          if (index < currentIndex) {
-            className += " completed";
-          } else if (index === currentIndex) {
-            className += " active";
-          }
+          if (index < currentIndex) className += " completed";
+          if (index === currentIndex) className += " active";
 
           return (
             <div key={step} className={className}>
@@ -69,6 +67,13 @@ const OrderStatus = ({ orderId }) => {
       <div className="current-status">
         Current Status: <strong>{status}</strong>
       </div>
+
+      {isDelivered && (
+        <div className="reorder">
+          <p>🎉 Your order has been delivered!</p>
+          <button onClick={onReset}>Start New Order</button>
+        </div>
+      )}
     </div>
   );
 };
