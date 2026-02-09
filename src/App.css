@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    font-family: Inter, system-ui, sans-serif;
+    background: #f7f7f7;
+  }
+  
+  .app {
+    min-height: 100vh;
+  }
+  
+  .header {
+    background: #ff5a5f;
+    color: #fff;
+    padding: 16px 24px;
+  }
+  
+  .content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .menu-section {
+    background: #fff;
+    padding: 16px;
+    border-radius: 12px;
+  }
+  
+  .sidebar {
+    background: #fff;
+    padding: 16px;
+    border-radius: 12px;
+  }

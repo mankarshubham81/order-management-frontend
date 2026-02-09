@@ -1,0 +1,25 @@
+.checkout {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .checkout input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .checkout button {
+    background: #ff5a5f;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .checkout button:disabled {
+    opacity: 0.6;
+  }

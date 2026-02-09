@@ -2,8 +2,9 @@ import { useState } from "react";
 import MenuList from "./components/MenuList";
 import Cart from "./components/Cart";
 import CheckoutForm from "./components/CheckoutForm";
-import { createOrder } from "./services/api";
 import OrderStatus from "./components/OrderStatus";
+import { createOrder } from "./services/api";
+import "./App.css";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -58,28 +59,37 @@ function App() {
   };
 
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Food Order App</h1>
+    <div className="app">
+      <header className="header">
+        <h1>🍕 Food Order App</h1>
+      </header>
 
-      {!orderId && (
-        <>
-          <MenuList onAddToCart={handleAddToCart} />
-          <Cart
-            cart={cart}
-            onUpdateQty={handleUpdateQty}
-            onRemove={handleRemove}
-          />
-          {cart.length > 0 && (
-            <CheckoutForm
-              onSubmit={handleCheckout}
-              disabled={loading}
-            />
-          )}
-        </>
-      )}
+      <main className="content">
+        {!orderId ? (
+          <>
+            <section className="menu-section">
+              <MenuList onAddToCart={handleAddToCart} />
+            </section>
 
+            <aside className="sidebar">
+              <Cart
+                cart={cart}
+                onUpdateQty={handleUpdateQty}
+                onRemove={handleRemove}
+              />
 
-{orderId && <OrderStatus orderId={orderId} />}
+              {cart.length > 0 && (
+                <CheckoutForm
+                  onSubmit={handleCheckout}
+                  disabled={loading}
+                />
+              )}
+            </aside>
+          </>
+        ) : (
+          <OrderStatus orderId={orderId} />
+        )}
+      </main>
     </div>
   );
 }

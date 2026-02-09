@@ -1,36 +1,68 @@
+import "./Cart.css";
+
 const Cart = ({ cart, onUpdateQty, onRemove }) => {
-    if (cart.length === 0) return <p>Your cart is empty.</p>;
-  
+  const total = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+
+  if (cart.length === 0) {
     return (
-      <div>
-        <h2>Cart</h2>
-  
+      <div className="cart empty">
+        <h3>Cart</h3>
+        <p>Your cart is empty.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="cart">
+      <h3>Your Cart</h3>
+
+      <div className="cart-items">
         {cart.map((item) => (
-          <div
-            key={item.id}
-            style={{ borderBottom: "1px solid #ccc", marginBottom: 10 }}
-          >
-            <h4>{item.name}</h4>
-            <p>₹{item.price}</p>
-  
-            <button onClick={() => onUpdateQty(item.id, item.quantity - 1)}>
-              -
-            </button>
-            <span style={{ margin: "0 10px" }}>{item.quantity}</span>
-            <button onClick={() => onUpdateQty(item.id, item.quantity + 1)}>
-              +
-            </button>
-  
-            <button
-              style={{ marginLeft: 10 }}
-              onClick={() => onRemove(item.id)}
-            >
-              Remove
-            </button>
+          <div key={item.id} className="cart-item">
+            <div className="item-info">
+              <span className="item-name">{item.name}</span>
+              <span className="item-price">₹{item.price}</span>
+            </div>
+
+            <div className="item-actions">
+              <div className="qty-control">
+                <button
+                  onClick={() =>
+                    onUpdateQty(item.id, item.quantity - 1)
+                  }
+                >
+                  −
+                </button>
+                <span>{item.quantity}</span>
+                <button
+                  onClick={() =>
+                    onUpdateQty(item.id, item.quantity + 1)
+                  }
+                >
+                  +
+                </button>
+              </div>
+
+              <button
+                className="remove-btn"
+                onClick={() => onRemove(item.id)}
+              >
+                Remove
+              </button>
+            </div>
           </div>
         ))}
       </div>
-    );
-  };
-  
-  export default Cart;
+
+      <div className="cart-footer">
+        <span>Total</span>
+        <strong>₹{total}</strong>
+      </div>
+    </div>
+  );
+};
+
+export default Cart;

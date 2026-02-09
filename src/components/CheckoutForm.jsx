@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./CheckoutForm.css";
 
 const CheckoutForm = ({ onSubmit, disabled }) => {
   const [form, setForm] = useState({
@@ -17,38 +18,35 @@ const CheckoutForm = ({ onSubmit, disabled }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Checkout</h2>
+    <form className="checkout" onSubmit={handleSubmit}>
+      <h3>Checkout</h3>
 
       <input
         name="name"
-        placeholder="Name"
+        placeholder="Full Name"
         value={form.name}
         onChange={handleChange}
         required
       />
-      <br />
 
       <input
         name="address"
-        placeholder="Address"
+        placeholder="Delivery Address"
         value={form.address}
         onChange={handleChange}
         required
       />
-      <br />
 
       <input
         name="phone"
-        placeholder="Phone"
+        placeholder="Phone Number"
         value={form.phone}
         onChange={handleChange}
         required
       />
-      <br />
 
       <button type="submit" disabled={disabled}>
-        Place Order
+        {disabled ? "Placing Order..." : "Place Order"}
       </button>
     </form>
   );
